@@ -10,35 +10,56 @@ namespace calcio
 
         static double assegnazione(double[]sq1, double[] sq2)
         {
-            double p1 = 0;
-            double p2 = 0;
-            double p3 = 0;
+            double fa1 = 0; //variabile forza attacco squadra 1
+            double fa2 = 0; //variabile forza attacco squadra 2
+            double p1 = 0;// variabile potenza totale squadra 1
+            double p2 = 0; // variabile potenza totale squadra 2
+            double p3 = 0; // variabile potenza totale delle due squadre
             double percentuale1 = 0;
             double percentuale2 = 0;
-            for(int i = 0; i < 11; i++)
+            for(int i = 0; i < 11; i++) //for scorrimento squadre
             {
-                p1=p1+ sq1[i];
-                p2=p1+ sq2[i];
+                if(sq1[i]>7)
+                {
+                    fa1=fa1+sq1[i]; //calcolo forza attacco squadra 1
+                }
+                if(sq2[i]>7)
+                {
+                    fa2=fa2+sq2[i]; //calcolo forza attacco squadra 2
+                }
+                
+                p1=p1+ sq1[i]; //calcolo potenza totale squadra 1
+
+                p2=p1+ sq2[i]; //calcolo potenza totale squadra 2
             }
-            p3 = p1 + p2;
+
+            p3 = p1 + p2; //calcolo potenza totale delle due squadre
 
             percentuale1 = p1 / p3;
             percentuale1 = percentuale1 * 100;
+            if(fa1>fa2)
+            {
+                percentuale1 = percentuale1 + 10;
+            }
+            else if(fa2>fa1)
+            {
+                percentuale1 = percentuale1 - 10;
+            }
             return percentuale1;
           
         }
         //funzioni cartellini
         static void gialli(double[] sq1, double[] sq2,double[]Contagialli1,double[]Contagialli2)
         {
-            double g1 = 0;
-            double g2 = 0;
+            double g1 = 0; //variabile  scelta gialli squadra 1
+            double g2 = 0; //variabile  scelta gialli squadra 2
             Random random = new Random();
-            double giallo = random.Next(1, 101);
-            if (giallo > 0 && giallo < 50)
+            double giallo = random.Next(1, 101);// decisione di quale squadra prende il giallo
+            if (giallo > 0 && giallo < 50)// giallo squadra 1
             {
                 g1++;
             }
-            else
+            else // giallo squadra 2
             {
                 g2++;
             }
@@ -57,7 +78,7 @@ namespace calcio
                     return;
                 }
                 sq1[verG] = sq1[verG]-10;
-                Console.WriteLine($"giocatore numero {verG} della squad 1 ha preso giallo");
+                Console.WriteLine($"giocatore numero {verG} della squad 1 ha preso giallo");//giallo squadra 1
 
             }
             else 
@@ -81,15 +102,15 @@ namespace calcio
         }
         static void rossi(double[] sq1, double[] sq2)//funzione rosso 
         {
-            double rn1 = 0;
-            double rn2 = 0;
+            double rn1 = 0; //variabile  scelta rossi squadra 1
+            double rn2 = 0; //variabile  scelta rossi squadra 2
             Random random = new Random();
-            double rosso = random.Next(1, 101);
-            if (rosso > 0 && rosso < 50)
+            double rosso = random.Next(1, 101); // decisione di quale squadra prende il rosso
+            if (rosso > 0 && rosso < 50) // rosso squadra 1
             {
                 rn1++;
             }
-            else
+            else // rosso squadra 2
             {
                 rn2++;
             }
@@ -288,7 +309,7 @@ namespace calcio
 
 
 
-    }
+                }
                  else//punizione
                  {
                  int punGoal = rand.Next(1, 101);//punGoal= punizione gol o no
@@ -311,7 +332,12 @@ namespace calcio
                  {
                  Console.WriteLine("punizione sbagliata per la squadra 2");
                  }
-    }
+                }
+                if(evento==60)//nessun evento
+                {
+                    Console.WriteLine($"nessun evento al minuto {i}");
+                }
+                }
                 if(i==45)//fine primo tempo cronaca
                 {
                     Console.WriteLine("fine primo tempo");
