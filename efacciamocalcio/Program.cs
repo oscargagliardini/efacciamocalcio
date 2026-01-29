@@ -19,11 +19,11 @@ namespace calcio
             double percentuale2 = 0;
             for(int i = 0; i < 11; i++) //for scorrimento squadre
             {
-                if(sq1[i]>7)
+                if(i>7)
                 {
                     fa1=fa1+sq1[i]; //calcolo forza attacco squadra 1
                 }
-                if(sq2[i]>7)
+                if(i>7)
                 {
                     fa2=fa2+sq2[i]; //calcolo forza attacco squadra 2
                 }
