@@ -270,8 +270,8 @@ namespace calcio
 
                     {
                         
-                        int sott1=rand.Next(5,10);
-                        int sott2=rand.Next(5,10);
+                        int sott1=rand.Next(1,3);
+                        int sott2=rand.Next(1,3);
                         sq1[j]=sq1[j]-sott1;
                         sq2[j]=sq2[j]-sott2;
                         
